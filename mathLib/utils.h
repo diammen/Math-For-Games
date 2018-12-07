@@ -1,4 +1,5 @@
 #pragma once
+#include "Vector2.h"
 
 // Returns the smaller of the two values
 int min(int a, int b);
@@ -26,3 +27,6 @@ bool isPowerOfTwo(int val);
 
 // Returns the next power of two after the given value
 int nextPowerOfTwo(int val);
+
+// Moves the current value towards the target value
+float moveTowards(float current, float target, float maxDelta);

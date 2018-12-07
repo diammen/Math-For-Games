@@ -35,14 +35,27 @@ int pow(int base, int power)
 
 bool isPowerOfTwo(int val)
 {
-	return !(val & (val-1)) == 0;
+	return (val & (val-1)) == 0;
 }
 
 int nextPowerOfTwo(int val)
 {
 	if (isPowerOfTwo(val))
 	{
-		int base = pow(val, 1 / 2);
-		return base;
+		val++;
+		while (!isPowerOfTwo(val))
+		{
+			val++;
+		}
 	}
+	return val;
+}
+
+float moveTowards(float current, float target, float maxDelta)
+{
+	if (abs((int)(target - current)) <= maxDelta)
+	{
+		return target;
+	}
+	return (target - current) * maxDelta + current;
 }

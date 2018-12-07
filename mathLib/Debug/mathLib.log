@@ -1,3 +1,2 @@
 ﻿  utils.cpp
-c:\users\s189072\source\repos\mathlib\mathlib\utils.cpp(48): warning C4715: 'nextPowerOfTwo': not all control paths return a value
-  mathLib.vcxproj -> c:\Users\s189072\source\repos\mathLib\Debug\mathLib.lib
+  mathLib.vcxproj -> C:\Users\s189072\source\repos\mathLib\Debug\mathLib.lib
