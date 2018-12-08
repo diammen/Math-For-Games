@@ -41,9 +41,7 @@ vec2 vec2::getScaled(const vec2 &rhs) const
 	return { x * rhs.x, y * rhs.y };
 }
 
-#ifdef RAYLIB_H
-operator Vector2::Vector2()
+float vec2::dot(const vec2 &rhs) const
 {
-	return Vector2();
+	return x * rhs.x + y * rhs.y;
 }
-#endif

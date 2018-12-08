@@ -14,6 +14,10 @@ struct vec3
 	vec3 &operator+=(const vec3 &rhs) { x += rhs.x; y += rhs.y; z += rhs.z; return *this; }
 	vec3 &operator-=(const vec3 &rhs) { x -= rhs.x; y -= rhs.y; z -= rhs.z; return *this; }
 
+	float dot(const vec3 &rhs) const;
+
+	vec3 cross(const vec3 &rhs) const;
+
 	bool operator==(const vec3 &rhs) const
 	{
 		if (rhs.x - x < FLT_EPSILON && rhs.y - y < FLT_EPSILON && rhs.z - z < FLT_EPSILON)

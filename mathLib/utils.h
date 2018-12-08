@@ -10,11 +10,11 @@ int max(int a, int b);
 // Returns a value no smaller than lower and no larger than upper
 int clamp(int value, int lower, int upper);
 
-const double PI = 3.141592653589793238;
-
-const double DEG_TO_RAD = PI / 180;
-
-const double RAD_TO_DEG = 180 / PI;
+//const double PI = 3.141592653589793238;
+//
+//const double DEG_TO_RAD = PI / 180;
+//
+//const double RAD_TO_DEG = 180 / PI;
 
 // Returns the absolute value of val
 int abs(int val);

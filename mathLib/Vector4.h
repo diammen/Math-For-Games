@@ -33,6 +33,10 @@ struct vec4
 
 	vec4 operator-() const { return vec4(-x, -y, -z, -w); }
 
+	float dot(const vec4 &rhs) const;
+
+	vec4 cross(const vec4 &rhs) const;
+
 	operator float *()
 	{
 		return *this;

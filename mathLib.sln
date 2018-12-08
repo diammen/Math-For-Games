@@ -11,6 +11,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "unitTest", "unitTest\unitTe
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "textWrap", "textWrap\textWrap.vcxproj", "{B3AE37D9-D7AF-4E74-A638-D3FB459003A2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E032F425-F5CB-420F-82A9-FCF677E10479} = {E032F425-F5CB-420F-82A9-FCF677E10479}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

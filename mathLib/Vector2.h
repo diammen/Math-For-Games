@@ -5,7 +5,23 @@
 struct vec2
 {
 #ifdef RAYLIB_H
-	operator Vector2() {};
+	vec2(Vector2 vec)
+	{
+		x = vec.x;
+		y = vec.y;
+}
+
+	vec2& operator=(const Vector2 &rhs)
+	{
+		x = rhs.x;
+		y = rhs.y;
+
+		return *this;
+	}
+	operator Vector2()
+	{
+		return { x, y };
+	}
 #endif
 
 	float x, y;
@@ -48,6 +64,8 @@ struct vec2
 
 	vec2 &operator+=(const vec2 &rhs) { x += rhs.x; y += rhs.y; return *this; }
 	vec2 &operator-=(const vec2 &rhs) { x -= rhs.x; y -= rhs.y; return *this; }
+
+	float dot(const vec2 &rhs) const;
 
 	bool operator==(const vec2 &rhs) const
 	{
