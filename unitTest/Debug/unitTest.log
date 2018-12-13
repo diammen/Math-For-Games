@@ -1,4 +1,2 @@
 ﻿  main.cpp
-c:\users\s189072\source\repos\mathlib\unittest\main.cpp(19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\s189072\source\repos\mathlib\unittest\main.cpp(19): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
   unitTest.vcxproj -> C:\Users\s189072\source\repos\mathLib\Debug\unitTest.exe
