@@ -69,15 +69,16 @@ struct vec2
 
 	bool operator==(const vec2 &rhs) const
 	{
-		if (rhs.x - x < FLT_EPSILON && rhs.y - y < FLT_EPSILON)
-		{
-			return true;
-		}
-		return false;
+		//if (abs(rhs.x - x) < (FLT_EPSILON * 1000) && abs(rhs.y - y) < (FLT_EPSILON * 1000))
+		//{
+		//	return true;
+		//}
+		//return false;
+		return (abs(x - rhs.x) < (1) && abs(y - rhs.y) < (1));
 	};
 	bool operator!=(const vec2 &rhs) const
 	{
-		if (rhs.x - x < FLT_EPSILON && rhs.y - y < FLT_EPSILON)
+		if (abs(x - rhs.x) < (FLT_EPSILON * 10) && abs(y - rhs.y) < (FLT_EPSILON * 10))
 		{
 			return false;
 		}
