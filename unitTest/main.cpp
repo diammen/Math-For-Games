@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cassert>
+#include <time.h>
 #include "utils.h"
 #include "macros.h"
 
@@ -14,7 +15,6 @@ int main()
 	bool tay = isPowerOfTwo(fay);
 	int bay = nextPowerOfTwo(fay);
 	int hay = 0;
-	float time = 0;
 	equalAssert("min", 2, min(2,3));
 	equalAssert("max", 3, max(2, 3));
 	equalAssert("clamp", 1, clamp(0, 1, 3));
@@ -30,5 +30,14 @@ int main()
 	vec2 diff = a - b;
 
 	nearAssert("diff x", 1.0f, diff.x, 0.0001f);
+
+	gen tRand;
+	gen fRand;
+
+	tRand.seedRand(time(NULL));
+	fRand.seedRand(time(NULL));
+	int result = tRand.rand(0, 10);
+	float fresult = fRand.randDecimal(0.0f, 5.0f);
+
 	return 0;
 }

@@ -15,11 +15,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "textWrap", "textWrap\textWr
 		{E032F425-F5CB-420F-82A9-FCF677E10479} = {E032F425-F5CB-420F-82A9-FCF677E10479}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Waypoints", "Waypoints\Waypoints.vcxproj", "{C50949CE-1E22-4003-A7B7-B64051599469}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E032F425-F5CB-420F-82A9-FCF677E10479} = {E032F425-F5CB-420F-82A9-FCF677E10479}
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -52,14 +47,6 @@ Global
 		{B3AE37D9-D7AF-4E74-A638-D3FB459003A2}.Release|x64.Build.0 = Release|x64
 		{B3AE37D9-D7AF-4E74-A638-D3FB459003A2}.Release|x86.ActiveCfg = Release|Win32
 		{B3AE37D9-D7AF-4E74-A638-D3FB459003A2}.Release|x86.Build.0 = Release|Win32
-		{C50949CE-1E22-4003-A7B7-B64051599469}.Debug|x64.ActiveCfg = Debug|x64
-		{C50949CE-1E22-4003-A7B7-B64051599469}.Debug|x64.Build.0 = Debug|x64
-		{C50949CE-1E22-4003-A7B7-B64051599469}.Debug|x86.ActiveCfg = Debug|Win32
-		{C50949CE-1E22-4003-A7B7-B64051599469}.Debug|x86.Build.0 = Debug|Win32
-		{C50949CE-1E22-4003-A7B7-B64051599469}.Release|x64.ActiveCfg = Release|x64
-		{C50949CE-1E22-4003-A7B7-B64051599469}.Release|x64.Build.0 = Release|x64
-		{C50949CE-1E22-4003-A7B7-B64051599469}.Release|x86.ActiveCfg = Release|Win32
-		{C50949CE-1E22-4003-A7B7-B64051599469}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

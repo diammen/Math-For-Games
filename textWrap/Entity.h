@@ -18,11 +18,12 @@ public:
 	float elapsed;
 	int multiplier;
 	int i;
+	bool left;
 
 	void update(float _multiplier, vec2 center);
 	void draw();
 	void move(vector<vec2>& waypoints);
 
 	Entity();
-	Entity(const string &filename, const Vector2 &newPos);
+	Entity(const string &filename, const Vector2 &newPos, float newDuration);
 };

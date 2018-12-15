@@ -20,7 +20,8 @@ int main()
 	float multiplier = 0;
 	float timer = 0;
 	float multTimer = 0;
-	srand(time(NULL));
+	gen randGen;
+	randGen.seedRand(time(NULL));
 	string text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 	vec2 position = { 100,100 };\
 
@@ -29,11 +30,15 @@ int main()
 		if (isblank(text[i])) wordCount++;
 	}
 
-	InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+	InitWindow(screenWidth, screenHeight, "orbital");
 
 	Texture2D ball = LoadTexture("ballshade_1.png");
 	vector<Entity> ents;
-	Entity centerBall("yellowball.png", vec2{ 400,400 });
+	vector<Entity> balls;
+	balls.push_back(Entity("yellowball.png", vec2{ 400,400 }, (float)randGen.rand(1, 3)));
+	balls.push_back(Entity("redball.png", vec2{ 600,350 }, (float)randGen.rand(1, 3)));
+	balls.push_back(Entity("brownball.png", vec2{ 100,100 }, (float)randGen.rand(1, 3)));
+
 	float myRad = 2 * PI / 4;
 
 	vector<vec2> waypoint;
@@ -41,8 +46,15 @@ int main()
 	waypoint.push_back(vec2{ 700, 80 });
 	waypoint.push_back(vec2{ 50, 250 });
 	waypoint.push_back(vec2{ 400, 400 });
+	waypoint.push_back(vec2{ 600, 350 });
+	waypoint.push_back(vec2{ 500, 200 });
+	waypoint.push_back(vec2{ 100, 100 });
+	waypoint.push_back(vec2{ 200, 300 });
 
-	vector<vec2> paint;
+	vector<vec2> yellowPath;
+	vector<vec2> redPath;
+	vector<vec2> brownPath;
+	
 
 	SetTargetFPS(60);
 	//--------------------------------------------------------------------------------------
@@ -55,18 +67,34 @@ int main()
 		multiplier = sin((float)multTimer) * 100;
 		multTimer += GetFrameTime() * 20;
 		timer+= GetFrameTime();
-		if (centerBall.i > 3)
-			centerBall.i = 0;
-		centerBall.move(waypoint);
-		paint.push_back(centerBall.pos);
-		if (centerBall.pos == waypoint[centerBall.i])
+		//yellowBall.move(waypoint);
+		//if (yellowBall.pos == waypoint[yellowBall.i])
+		//{
+		//	int previousWaypoint = yellowBall.i;
+		//	yellowBall.startPos = waypoint[yellowBall.i];
+		//	yellowBall.elapsed = 0;
+		//	yellowBall.left = !yellowBall.left;
+		//	while (yellowBall.i == previousWaypoint)
+		//	{
+		//		yellowBall.i = randGen.rand(0,(int)waypoint.size());
+		//		std::cout << yellowBall.i << std::endl;
+		//	}
+		//}
+		for (int i = 0; i < balls.size(); ++i)
 		{
-			int previousWaypoint = centerBall.i;
-			centerBall.startPos = waypoint[centerBall.i];
-			centerBall.elapsed = 0;
-			while (centerBall.i == previousWaypoint)
+			balls[i].move(waypoint);
+			if (balls[i].pos == waypoint[balls[i].i])
 			{
-				centerBall.i = rand() % 4;
+				int previousWaypoint = balls[i].i;
+				balls[i].startPos = waypoint[balls[i].i];
+				balls[i].elapsed = 0;
+				balls[i].left = !balls[i].left;
+				while (balls[i].i == previousWaypoint)
+				{
+					balls[i].i = randGen.rand(0, (int)waypoint.size());
+					balls[i].duration = randGen.rand(1, 3);
+					std::cout << balls[i].i << std::endl;
+				}
 			}
 		}
 		if (timer > 1 && counter < 6)
@@ -82,7 +110,22 @@ int main()
 		}
 		for (int i = 0; i < ents.size(); ++i)
 		{
-			ents[i].update(50, centerBall.pos);
+			ents[i].update(50, balls[0].pos);
+		}
+		yellowPath.push_back(balls[0].pos);
+		if (yellowPath.size() > 30)
+		{
+			yellowPath.erase(yellowPath.begin());
+		}
+		redPath.push_back(balls[1].pos);
+		if (redPath.size() > 30)
+		{
+			redPath.erase(redPath.begin());
+		}
+		brownPath.push_back(balls[2].pos);
+		if (brownPath.size() > 30)
+		{
+			brownPath.erase(brownPath.begin());
 		}
 		//----------------------------------------------------------------------------------
 
@@ -95,18 +138,36 @@ int main()
 		textLength = MeasureText(text.c_str(), 20);
 		DrawText(text.c_str(), 0, 0, 20, LIGHTGRAY);
 		DrawText(SubText(text.c_str(), 0, 30), 0, 50, 20, LIGHTGRAY);
-		for (int i = 0; i < 4; ++i)
+		for (int i = 0; i < waypoint.size(); ++i)
 		{
 			DrawTexturePro(ball, Rectangle{ 0,0,32,32 }, Rectangle{ waypoint[i].x,waypoint[i].y,16,16 }, Vector2{ 8,8 }, 0, WHITE);
 		}
-		if (paint.size() > 2)
+		if (yellowPath.size() > 2)
 		{
-			for (int i = 0; i < paint.size() - 1; ++i)
+			for (int i = 0; i < yellowPath.size() - 1; ++i)
 			{
-				DrawLineEx(paint[i], paint[i + 1], 2, YELLOW);
+				DrawLineEx(yellowPath[i], yellowPath[i + 1], 3, YELLOW);
+				//DrawCircleLines(yellowPath[i].x, yellowPath[i].y, 5, WHITE);
 			}
 		}
-		centerBall.draw();
+		if (redPath.size() > 2)
+		{
+			for (int i = 0; i < redPath.size() - 1; ++i)
+			{
+				DrawLineEx(redPath[i], redPath[i + 1], 3, RED);
+				//DrawCircleLines(redPath[i].x, redPath[i].y, 5, WHITE);
+			}
+		}
+		if (brownPath.size() > 2)
+		{
+			for (int i = 0; i < brownPath.size() - 1; ++i)
+			{
+				DrawLineEx(brownPath[i], brownPath[i + 1], 3, DARKBROWN);
+				//DrawCircleLines(brownPath[i].x, brownPath[i].y, 5, WHITE);
+			}
+		}
+		for (int i = 0; i < balls.size(); ++i)
+			balls[i].draw();
 		for (int i = 0; i < ents.size(); ++i)
 		{
 			ents[i].draw();

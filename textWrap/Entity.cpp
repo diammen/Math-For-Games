@@ -23,7 +23,7 @@ Entity::Entity()
 	tex = LoadTexture("ballshade_1.png");
 }
 
-Entity::Entity(const string &filename, const Vector2 &newPos)
+Entity::Entity(const string &filename, const Vector2 &newPos, float newDuration)
 {
 	rec.x = newPos.x;
 	rec.y = newPos.y;
@@ -32,7 +32,7 @@ Entity::Entity(const string &filename, const Vector2 &newPos)
 
 	pos.x = rec.x;
 	pos.y = rec.y;
-	duration = 1;
+	duration = newDuration;
 	elapsed = 0;
 
 	startPos = pos;
@@ -61,5 +61,8 @@ void Entity::move(vector<vec2>& waypoints)
 	elapsed += GetFrameTime();
 	//pos = lerp(startPos, waypoints[i], (elapsed/duration) > 1 ? 1 : (elapsed / duration));
 	vec2 mid = startPos + (waypoints[i] - startPos) * 0.5f;
-	pos = quadraticBezier(startPos, vec2{-mid.y,mid.x}, waypoints[i], (elapsed / duration) > 1 ? 1 : (elapsed / duration));
+	vec2 leftNorm = { -mid.y, mid.x };
+	vec2 rightNorm = { mid.y, mid.x };
+	if (left) pos = quadraticBezier(startPos, leftNorm, waypoints[i], (elapsed / duration) > 1 ? 1 : (elapsed / duration));
+	else pos = quadraticBezier(startPos, rightNorm, waypoints[i], (elapsed / duration) > 1 ? 1 : (elapsed / duration));
 }
