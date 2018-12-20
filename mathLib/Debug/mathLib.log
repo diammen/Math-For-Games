@@ -1,3 +1,12 @@
-﻿  utils.cpp
+﻿  Vector2.cpp
+c:\users\s189072\source\repos\mathlib\mathlib\vector2.cpp(50): error C2084: function 'vec2 operator *(const float,const vec2 &)' already has a body
+  c:\users\s189072\source\repos\mathlib\mathlib\vector2.h(56): note: see previous definition of '*'
+  Vector3.cpp
+c:\users\s189072\source\repos\mathlib\mathlib\vector3.cpp(61): error C2084: function 'vec3 operator *(const float,const vec3 &)' already has a body
+  c:\users\s189072\source\repos\mathlib\mathlib\vector3.h(14): note: see previous definition of '*'
+  Vector4.cpp
+c:\users\s189072\source\repos\mathlib\mathlib\vector4.cpp(61): error C2084: function 'vec4 operator *(const float,const vec4 &)' already has a body
+  c:\users\s189072\source\repos\mathlib\mathlib\vector4.h(15): note: see previous definition of '*'
+  utils.cpp
 c:\users\s189072\source\repos\mathlib\mathlib\random.h(63): warning C4244: 'return': conversion from 'uint64_t' to 'int', possible loss of data
-  mathLib.vcxproj -> C:\Users\s189072\source\repos\mathLib\Debug\mathLib.lib
+  Generating Code...

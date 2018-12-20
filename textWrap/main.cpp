@@ -146,7 +146,7 @@ int main()
 		{
 			for (int i = 0; i < yellowPath.size() - 1; ++i)
 			{
-				DrawLineEx(yellowPath[i], yellowPath[i + 1], 3, YELLOW);
+				DrawLineEx(yellowPath[i], yellowPath[i + 1], i, YELLOW);
 				//DrawCircleLines(yellowPath[i].x, yellowPath[i].y, 5, WHITE);
 			}
 		}
@@ -154,7 +154,7 @@ int main()
 		{
 			for (int i = 0; i < redPath.size() - 1; ++i)
 			{
-				DrawLineEx(redPath[i], redPath[i + 1], 3, RED);
+				DrawLineEx(redPath[i], redPath[i + 1], i-2, RED);
 				//DrawCircleLines(redPath[i].x, redPath[i].y, 5, WHITE);
 			}
 		}
@@ -162,7 +162,7 @@ int main()
 		{
 			for (int i = 0; i < brownPath.size() - 1; ++i)
 			{
-				DrawLineEx(brownPath[i], brownPath[i + 1], 3, DARKBROWN);
+				DrawLineEx(brownPath[i], brownPath[i + 1], i-1, DARKBROWN);
 				//DrawCircleLines(brownPath[i].x, brownPath[i].y, 5, WHITE);
 			}
 		}

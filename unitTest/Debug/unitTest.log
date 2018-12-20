@@ -1,8 +1,8 @@
 ﻿  main.cpp
-c:\users\s189072\source\repos\mathlib\mathlib\random.h(62): warning C4244: 'return': conversion from 'uint64_t' to 'int', possible loss of data
+c:\users\s189072\source\repos\mathlib\mathlib\random.h(63): warning C4244: 'return': conversion from 'uint64_t' to 'int', possible loss of data
 c:\users\s189072\source\repos\mathlib\unittest\main.cpp(37): warning C4244: 'argument': conversion from 'time_t' to 'int', possible loss of data
 c:\users\s189072\source\repos\mathlib\unittest\main.cpp(38): warning C4244: 'argument': conversion from 'time_t' to 'int', possible loss of data
-c:\users\s189072\source\repos\mathlib\mathlib\random.h(36): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\s189072\source\repos\mathlib\mathlib\random.h(37): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   c:\users\s189072\source\repos\mathlib\unittest\main.cpp(40): note: see reference to function template instantiation 'T gen::randDecimal<float>(T,T)' being compiled
           with
           [

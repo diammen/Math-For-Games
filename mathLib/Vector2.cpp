@@ -45,3 +45,8 @@ float vec2::dot(const vec2 &rhs) const
 {
 	return x * rhs.x + y * rhs.y;
 }
+
+//vec2 operator*(const float lhs, const vec2 &rhs)
+//{
+//	return { lhs * rhs.x, lhs * rhs.y };
+//}
