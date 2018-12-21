@@ -1,6 +1,7 @@
 #pragma once
 #include "Vector2.h"
 #include "random.h"
+#include "Mat3.h"
 
 // Returns the smaller of the two values
 int min(int a, int b);

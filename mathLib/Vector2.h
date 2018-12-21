@@ -87,11 +87,11 @@ struct vec2
 
 	operator float *()
 	{
-		return *this;
+		return &x;
 	}
 	operator const float *() const
 	{
-		return *this;
+		return &x;
 	}
 };
 

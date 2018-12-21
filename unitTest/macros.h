@@ -16,3 +16,8 @@
 	{ if (y - z <= w) std::cout << "[PASS] " << x << std::endl; \
 		else std::cout << "[FAIL] " << x << std::endl; \
 	}
+
+#define TEST(x, y, z) \
+	{ if (y == z) std::cout << "[PASS] " << x << std::endl; \
+		else std::cout << "[FAIL] " << x << std::endl; \
+	}

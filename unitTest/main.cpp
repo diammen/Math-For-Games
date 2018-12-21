@@ -39,5 +39,25 @@ int main()
 	int result = tRand.rand(0, 10);
 	float fresult = fRand.randDecimal(0.0f, 5.0f);
 
+	mat3 matrix1(2, -1, 1, 1, 3, 1, 2, 3, 1);
+	mat3 matrix2(1, 2, 4, 3, 4, 1, 2, 4, 3);
+	mat3 matrix3 = matrix1 * matrix2;
+
+	matrix1 *= matrix2;
+
+	bool yes = matrix1 == matrix3;
+
+	matrix1.transpose();
+
+	TEST("Matrix3 multiply", matrix3, mat3(1, 4, 10, 12, 18, 10, 13, 20, 14));
+	TEST("Matrix3 transpose", matrix1, mat3(1, 12, 13, 4, 18, 20, 10, 10, 14));
+
+	vec3 testVec3 = { 2,2,2 };
+	vec2 testVec2 = { 2,2 };
+
+	vec3 vec3Result = matrix2 * testVec3;
+	vec2 vec2Result = matrix2 * testVec2;
+
+	getchar();
 	return 0;
 }
