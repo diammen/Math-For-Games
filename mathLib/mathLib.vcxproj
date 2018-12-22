@@ -117,6 +117,7 @@
   <ItemGroup>
     <ClInclude Include="Mat3.h" />
     <ClInclude Include="random.h" />
+    <ClInclude Include="Transform2D.h" />
     <ClInclude Include="utils.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Vector3.h" />
@@ -124,6 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Mat3.cpp" />
+    <ClCompile Include="Transform2D.cpp" />
     <ClCompile Include="utils.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Vector3.cpp" />

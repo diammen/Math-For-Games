@@ -36,3 +36,43 @@ void transform2d::rotate(const float angle)
 {
 	trsMatrix.set(trsMatrix.rotation(angle + localRotation()));
 }
+
+vec2 transform2d::worldPosition() const
+{
+	return vec2(parent->trsMatrix.xAxis.x * trsMatrix.xAxis.x, parent->trsMatrix.xAxis.y * trsMatrix.xAxis.y);
+}
+float transform2d::worldRotation() const
+{
+	return tan((parent->trsMatrix.yAxis.y * trsMatrix.yAxis.y) / (parent->trsMatrix.xAxis.x * trsMatrix.xAxis.x));
+}
+vec2 transform2d::worldScale() const
+{
+	return vec2(parent->trsMatrix.zAxis.x * trsMatrix.zAxis.x, parent->trsMatrix.zAxis.y *trsMatrix.zAxis.y);
+}
+
+void transform2d::setParent(transform2d *_parent)
+{
+	parent = _parent;
+}
+
+transform2d *transform2d::getParent() const
+{
+	return parent;
+}
+
+void transform2d::addChild(transform2d * child)
+{
+	children.push_back(child);
+}
+
+transform2d * transform2d::getChildren() const
+{
+	if (children.size() > 1)
+		return children[0];
+	return nullptr;
+}
+
+size_t transform2d::getChildrenCount() const
+{
+	return children.size();
+}

@@ -61,19 +61,19 @@ mat3 mat3::getTranspose()
 	return newMat;
 }
 
-//// returns a translation matrix with the given changes for each axis
+// returns a translation matrix with the given changes for each axis
 mat3 mat3::translation(float x, float y)
 {
 	return mat3(1, 0, x,
 				0, 1, y,
 				0, 0, 1);
 }
-//// returns a translation matrix with the given changes for each axis
+// returns a translation matrix with the given changes for each axis
 mat3 mat3::translation(const vec2 &vec)
 {
 	return translation(vec.x, vec.y);
 }
-//// returns a rotation matrix with the given rotation
+// returns a rotation matrix with the given rotation
 mat3 mat3::rotation(float rot)
 {
 	return mat3(cos(rot), -sin(rot), 0,
@@ -84,5 +84,5 @@ mat3 mat3::scale(float xScale, float yScale)
 {
 	return mat3(xScale, 0, 0,
 				0, yScale, 0,
-				0, 0, 0);
+				0, 0, 1);
 }
