@@ -59,3 +59,16 @@ float moveTowards(float current, float target, float maxDelta)
 	}
 	return (target - current) * maxDelta + current;
 }
+
+bool calculateDifference(float a, float b, float maxRelDiff)
+{
+	float diff = fabs(a - b);
+	a = fabs(a);
+	b = fabs(b);
+
+	float largest = (b < a) ? b : a;
+
+	if (diff <= largest * maxRelDiff)
+		return true;
+	return false;
+}

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cassert>
 #include <time.h>
-#include "utils.h"
+#include "mathlib.h"
 #include "macros.h"
 
 int main()
@@ -15,6 +15,16 @@ int main()
 	bool tay = isPowerOfTwo(fay);
 	int bay = nextPowerOfTwo(fay);
 	int hay = 0;
+	vec2 v2a(13.5f, -48.23f), v2b(5, 3.99f), v2c;
+	v2c = v2a + v2b;
+	vec3 v3a(13.5f, -48.23f, 862), v3b(5, 3.99f, -12), v3c;
+	v3c = v3a + v3b;
+	vec4 v4a(13.5f, -48.23f, 862, 0), v4b(5, 3.99f, -12, 1), v4c;
+	v4c = v4a + v4b;
+
+	TEST("Vector2 addition", v2c, vec2(18.5f, -44.24f));
+	TEST("Vector3 addition", v3c, vec3(18.5f, -44.24f, 850));
+	TEST("Vector4 addition", v4c, vec4(18.5f, -44.24f, 850, 1));
 	equalAssert("min", 2, min(2,3));
 	equalAssert("max", 3, max(2, 3));
 	equalAssert("clamp", 1, clamp(0, 1, 3));

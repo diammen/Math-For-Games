@@ -19,8 +19,9 @@ float vec2::magnitude() const
 
 vec2 &vec2::normalize()
 {
-	x /= magnitude();
-	y /= magnitude();
+	float mag = magnitude();
+	x /= mag;
+	y /= mag;
 	return *this;
 }
 

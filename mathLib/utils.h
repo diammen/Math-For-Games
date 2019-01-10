@@ -1,7 +1,5 @@
 #pragma once
-#include "Vector2.h"
-#include "random.h"
-#include "Mat3.h"
+#include <cmath>
 
 // Returns the smaller of the two values
 int min(int a, int b);
@@ -32,6 +30,8 @@ int nextPowerOfTwo(int val);
 
 // Moves the current value towards the target value
 float moveTowards(float current, float target, float maxDelta);
+
+bool calculateDifference(float a, float b, float maxRelDiff);
 
 // Linearly interpolate between two values
 template <typename T>

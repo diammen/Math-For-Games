@@ -33,13 +33,14 @@ vec4 vec4::cross(const vec4 &rhs) const
 
 vec4 &vec4::normalize()
 {
-	x /= magnitude();
-	y /= magnitude();
-	z /= magnitude();
-	w /= magnitude();
+	float mag = magnitude();
+	x /= mag;
+	y /= mag;
+	z /= mag;
+	w /= mag;
 	return *this;
 }
-vec4 vec4::getNormalised() const
+vec4 vec4::getNormalized() const
 {
 	return { x / magnitude(), y / magnitude(), z / magnitude(), w / magnitude() };
 }

@@ -1,4 +1,5 @@
 #pragma once
+#include "utils.h"
 #include <cfloat>
 
 struct vec3
@@ -9,7 +10,7 @@ struct vec3
 	vec3(float _x, float _y, float _z);
 
 	vec3 operator+(const vec3 &rhs) const { return vec3(x + rhs.x, y + rhs.y, z + rhs.z); }
-	vec3 operator-(const vec3 &rhs) const { return vec3(x - rhs.x, y - rhs.y, z + rhs.z); }
+	vec3 operator-(const vec3 &rhs) const { return vec3(x - rhs.x, y - rhs.y, z - rhs.z); }
 	vec3 operator*(const float rhs) const { return vec3(x * rhs, y * rhs, z * rhs); }
 	friend vec3 operator*(const float lhs, const vec3 &rhs)
 	{
@@ -35,19 +36,25 @@ struct vec3
 
 	bool operator==(const vec3 &rhs) const
 	{
-		if (rhs.x - x < FLT_EPSILON && rhs.y - y < FLT_EPSILON && rhs.z - z < FLT_EPSILON)
-		{
-			return true;
-		}
-		return false;
+		//if (rhs.x - x < FLT_EPSILON && rhs.y - y < FLT_EPSILON && rhs.z - z < FLT_EPSILON)
+		//{
+		//	return true;
+		//}
+		//return false;
+		return calculateDifference(x, rhs.x, FLT_EPSILON) && 
+			calculateDifference(y, rhs.y, FLT_EPSILON) && 
+			calculateDifference(z, rhs.z, FLT_EPSILON);
 	};
 	bool operator!=(const vec3 &rhs) const
 	{
-		if (rhs.x - x < FLT_EPSILON && rhs.y - y < FLT_EPSILON && rhs.z - z < FLT_EPSILON)
-		{
-			return false;
-		}
-		return true;
+		//if (rhs.x - x < FLT_EPSILON && rhs.y - y < FLT_EPSILON && rhs.z - z < FLT_EPSILON)
+		//{
+		//	return false;
+		//}
+		//return true;
+		return !calculateDifference(x, rhs.x, FLT_EPSILON) &&
+			!calculateDifference(y, rhs.y, FLT_EPSILON) &&
+			!calculateDifference(z, rhs.z, FLT_EPSILON);
 	};
 
 	vec3 operator-() const { return vec3(-x, -y, -z); }

@@ -1,18 +1,19 @@
 #pragma once
 #include "Vector4.h"
 #include "Vector3.h"
+#include "utils.h"
 struct mat4
 {
 	union
 	{
 		struct
 		{
-			vec3 xAxis;
-			vec3 yAxis;
-			vec3 zAxis;
-			vec3 wAxis;
+			vec4 xAxis;
+			vec4 yAxis;
+			vec4 zAxis;
+			vec4 wAxis;
 		};
-		vec3 axis[4];
+		vec4 axis[4];
 		struct
 		{
 			float m1, m2, m3, m4,
@@ -44,8 +45,8 @@ struct mat4
 		return ptr;
 	}
 
-	// returns vec3 objects when accessing by subscript operator
-	vec3 &operator[](const int index)
+	// returns vec4 objects when accessing by subscript operator
+	vec4 &operator[](const int index)
 	{
 		return axis[index];
 	}
@@ -110,9 +111,9 @@ struct mat4
 	static mat4 scale(float xScale, float yScale, float zScale);
 
 	// transforms a 4D vector by performing 4x4 x 4x1 matrix multiplication
-	vec3 operator*(const vec3 &rhs) const
+	vec4 operator*(const vec4 &rhs) const
 	{
-		vec3 newVec;
+		vec4 newVec;
 		for (int i = 0; i < 4; ++i) // y columns on first matrix
 			for (int j = 0; j < 4; ++j) // x rows on second matrix
 				newVec[i] += mm[i][j] * rhs[j];

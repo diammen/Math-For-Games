@@ -1,4 +1,5 @@
 #pragma once
+#include "utils.h"
 #include <cmath>
 #include <cfloat>
 
@@ -71,7 +72,9 @@ struct vec2
 		//	return true;
 		//}
 		//return false;
-		return (abs(x - rhs.x) < (1) && abs(y - rhs.y) < (1));
+		//return (abs(x - rhs.x) < (FLT_EPSILON * 100) && abs(y - rhs.y) < (FLT_EPSILON * 100));
+		return calculateDifference(x, rhs.x, FLT_EPSILON) && 
+			calculateDifference(y, rhs.y, FLT_EPSILON);
 	};
 	bool operator!=(const vec2 &rhs) const
 	{
@@ -80,7 +83,9 @@ struct vec2
 		//	return false;
 		//}
 		//return true;
-		return !(abs(x - rhs.x) < (1) && abs(y - rhs.y) < (1));
+		//return !(abs(x - rhs.x) < (FLT_EPSILON * 100) && abs(y - rhs.y) < (FLT_EPSILON * 100));
+		return !calculateDifference(x, rhs.x, FLT_EPSILON) && 
+			!calculateDifference(y, rhs.y, FLT_EPSILON);
 	};
 
 	vec2 operator-() const { return vec2(-x, -y); }
