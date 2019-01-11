@@ -105,7 +105,7 @@ struct mat3
 	// returns a translation matrix with the given changes for each axis
 	static mat3 scale(float xScale, float yScale);
 
-	// transforms a 4D vector by performing 4x4 x 4x1 matrix multiplication
+	// transforms a 3D vector by performing 3x3 x 3x1 matrix multiplication
 	vec3 operator*(const vec3 &rhs) const
 	{
 		vec3 newVec;
@@ -113,6 +113,9 @@ struct mat3
 			for (int j = 0; j < 3; ++j) // x rows on second matrix
 					newVec[i] += mm[i][j] * rhs[j];
 		return newVec;
+
+		//vec3 temp = { m1 * rhs.x + m2 * rhs.y + m3 * rhs.z, m4 * rhs.x + m5 * rhs.y + m6 * rhs.z, m7 * rhs.x + m8 * rhs.y + m9 * rhs.z };
+		//return temp;
 	}
 	// convenience function for transforming a 2D vector
 	vec2 operator*(const vec2 &rhs) const

@@ -4,9 +4,12 @@
 #include "Mat3.h"
 struct transform2d
 {
-	vec2 localPosition() const;
-	float localRotation() const;
-	vec2 localScale() const;
+public:
+	transform2d();
+
+	vec2 localPos;
+	float localRot;
+	vec2 localScale;
 
 	void setLocalPosition(const vec2 &newPos);
 	void setLocalRotation(const float newRot);
@@ -14,6 +17,12 @@ struct transform2d
 
 	void translate(const vec2& offset);
 	void rotate(const float angle);
+
+	void lookAt(const transform2d &target);
+	vec2 forward() const;
+	void setForward(const vec2 &newFwd);
+
+	mat3 getTRSMatrix() const;
 
 	vec2 worldPosition() const;
 	float worldRotation() const;
@@ -27,10 +36,6 @@ struct transform2d
 	size_t getChildrenCount() const;
 
 private:
-	mat3 trsMatrix;
-	// position
-	// rotation
-	// scale
 	transform2d * parent;
 	std::vector<transform2d *> children;
 };

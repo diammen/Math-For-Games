@@ -2,7 +2,7 @@
 #include <vector>
 #include <time.h>
 #include "raylib.h"
-#include "utils.h"
+#include "mathLib.h"
 #include "Entity.h"
 using std::string;
 using std::vector;
@@ -67,19 +67,6 @@ int main()
 		multiplier = sin((float)multTimer) * 100;
 		multTimer += GetFrameTime() * 20;
 		timer+= GetFrameTime();
-		//yellowBall.move(waypoint);
-		//if (yellowBall.pos == waypoint[yellowBall.i])
-		//{
-		//	int previousWaypoint = yellowBall.i;
-		//	yellowBall.startPos = waypoint[yellowBall.i];
-		//	yellowBall.elapsed = 0;
-		//	yellowBall.left = !yellowBall.left;
-		//	while (yellowBall.i == previousWaypoint)
-		//	{
-		//		yellowBall.i = randGen.rand(0,(int)waypoint.size());
-		//		std::cout << yellowBall.i << std::endl;
-		//	}
-		//}
 		for (int i = 0; i < balls.size(); ++i)
 		{
 			balls[i].move(waypoint);
@@ -135,9 +122,9 @@ int main()
 
 		ClearBackground(BLACK);
 
-		textLength = MeasureText(text.c_str(), 20);
-		DrawText(text.c_str(), 0, 0, 20, LIGHTGRAY);
-		DrawText(SubText(text.c_str(), 0, 30), 0, 50, 20, LIGHTGRAY);
+		//textLength = MeasureText(text.c_str(), 20);
+		//DrawText(text.c_str(), 0, 0, 20, LIGHTGRAY);
+		//DrawText(SubText(text.c_str(), 0, 30), 0, 50, 20, LIGHTGRAY);
 		for (int i = 0; i < waypoint.size(); ++i)
 		{
 			DrawTexturePro(ball, Rectangle{ 0,0,32,32 }, Rectangle{ waypoint[i].x,waypoint[i].y,16,16 }, Vector2{ 8,8 }, 0, WHITE);

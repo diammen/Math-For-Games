@@ -1,53 +1,65 @@
 #include "Transform2D.h"
 
-vec2 transform2d::localPosition() const
+transform2d::transform2d()
 {
-	return vec2(trsMatrix.xAxis.x, trsMatrix.xAxis.y);
-}
-float transform2d::localRotation() const
-{
-	return tan(trsMatrix.yAxis.y / trsMatrix.yAxis.x);
-}
-vec2 transform2d::localScale() const
-{
-	return vec2(trsMatrix.zAxis.x, trsMatrix.zAxis.y);
+
 }
 
 void transform2d::setLocalPosition(const vec2 &newPos)
 {
-	trsMatrix.xAxis.x = newPos.x;
-	trsMatrix.xAxis.y = newPos.y;
+	localPos = newPos;
 }
 void transform2d::setLocalRotation(const float newRot)
 {
-	trsMatrix.set(trsMatrix.rotation(newRot));
+	localRot = newRot;
 }
 void transform2d::setLocalScale(const vec2 &newScale)
 {
-	trsMatrix.zAxis.x = newScale.x;
-	trsMatrix.zAxis.y = newScale.y;
+	localScale = newScale;
 }
 
 void transform2d::translate(const vec2& offset)
 {
-	trsMatrix.set(trsMatrix.translation(offset));
+	localPos += offset;
 }
 void transform2d::rotate(const float angle)
 {
-	trsMatrix.set(trsMatrix.rotation(angle + localRotation()));
+	localRot += angle;
+}
+
+void transform2d::lookAt(const transform2d &target)
+{
+	vec2 targetVec = target.localPos - localPos;
+	float angle = atan2(targetVec.y, targetVec.x);
+	setLocalRotation(angle);
+}
+
+vec2 transform2d::forward() const
+{
+	return vec2(cos(localRot), sin(localRot)).normalize();
+}
+
+void transform2d::setForward(const vec2 &newFwd)
+{
+	setLocalRotation(atan2(newFwd.y, newFwd.x));
+}
+
+mat3 transform2d::getTRSMatrix() const
+{
+	return mat3::translation(localPos) * mat3::rotation(localRot) * mat3::scale(localScale.x, localScale.y);
 }
 
 vec2 transform2d::worldPosition() const
 {
-	return vec2(parent->trsMatrix.xAxis.x * trsMatrix.xAxis.x, parent->trsMatrix.xAxis.y * trsMatrix.xAxis.y);
+	return vec2(parent->localPos.x + localPos.x, parent->localPos.y + localPos.y);
 }
 float transform2d::worldRotation() const
 {
-	return tan((parent->trsMatrix.yAxis.y * trsMatrix.yAxis.y) / (parent->trsMatrix.xAxis.x * trsMatrix.xAxis.x));
+	return tan((parent->localRot + localRot));
 }
 vec2 transform2d::worldScale() const
 {
-	return vec2(parent->trsMatrix.zAxis.x * trsMatrix.zAxis.x, parent->trsMatrix.zAxis.y *trsMatrix.zAxis.y);
+	return vec2(parent->localScale.x * localScale.x, parent->localScale.y * localScale.y);
 }
 
 void transform2d::setParent(transform2d *_parent)
