@@ -62,7 +62,7 @@ void Entity::move(vector<vec2>& waypoints)
 	//pos = lerp(startPos, waypoints[i], (elapsed/duration) > 1 ? 1 : (elapsed / duration));
 	vec2 mid = startPos + (waypoints[i] - startPos) * 0.5f;
 	vec2 leftNorm = { -mid.y, mid.x };
-	vec2 rightNorm = { mid.y, mid.x };
+	vec2 rightNorm = { mid.y, -mid.x };
 	if (left) pos = quadraticBezier(startPos, leftNorm, waypoints[i], (elapsed / duration) > 1 ? 1 : (elapsed / duration));
 	else pos = quadraticBezier(startPos, rightNorm, waypoints[i], (elapsed / duration) > 1 ? 1 : (elapsed / duration));
 }

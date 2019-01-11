@@ -2,7 +2,11 @@
 
 mat3::mat3()
 {
-	m1 = m2 = m3 = m4 = m5 = m6 = m7 = m8 = m9 = 0;
+	m1 = 1;
+	m2 = m3 = m4 = 0;
+	m5 = 1;
+	m6 = m7 = m8 = 0;
+	m9 = 1;
 }
 
 mat3::mat3(float * ptr)
