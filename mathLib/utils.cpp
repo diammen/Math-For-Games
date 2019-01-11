@@ -15,7 +15,7 @@ int clamp(int value, int lower, int upper)
 	return min(upper, max(value, lower));
 }
 
-int abs(int val)
+int abs2(int val)
 {
 	return val < 0 ? -val : val;
 }
@@ -53,7 +53,7 @@ int nextPowerOfTwo(int val)
 
 float moveTowards(float current, float target, float maxDelta)
 {
-	if (abs((int)(target - current)) <= maxDelta)
+	if (abs2((int)(target - current)) <= maxDelta)
 	{
 		return target;
 	}

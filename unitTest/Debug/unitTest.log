@@ -1,11 +1,13 @@
 ﻿  main.cpp
-c:\users\s189072\source\repos\mathlib\mathlib\random.h(63): warning C4244: 'return': conversion from 'uint64_t' to 'int', possible loss of data
-c:\users\s189072\source\repos\mathlib\unittest\main.cpp(47): warning C4244: 'argument': conversion from 'time_t' to 'int', possible loss of data
-c:\users\s189072\source\repos\mathlib\unittest\main.cpp(48): warning C4244: 'argument': conversion from 'time_t' to 'int', possible loss of data
-c:\users\s189072\source\repos\mathlib\mathlib\random.h(37): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  c:\users\s189072\source\repos\mathlib\unittest\main.cpp(50): note: see reference to function template instantiation 'T gen::randDecimal<float>(T,T)' being compiled
-          with
-          [
-              T=float
-          ]
-  unitTest.vcxproj -> C:\Users\s189072\source\repos\mathLib\Debug\unitTest.exe
+  Mat3.cpp
+  Mat4.cpp
+  Transform2D.cpp
+  unittest.cpp
+c:\users\s189072\source\repos\mathlib\unittest\unittest.cpp(382): warning C4305: 'argument': truncation from 'double' to 'float'
+  utils.cpp
+  Vector2.cpp
+  Vector3.cpp
+  Vector4.cpp
+  Generating Code...
+c:\users\s189072\source\repos\mathlib\unittest\mat4.cpp(112): warning C4715: 'mat4::rotation': not all control paths return a value
+  UnitTest.vcxproj -> C:\Users\s189072\source\repos\mathLib\Debug\UnitTest.exe

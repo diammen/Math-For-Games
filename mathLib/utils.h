@@ -10,14 +10,14 @@ int max(int a, int b);
 // Returns a value no smaller than lower and no larger than upper
 int clamp(int value, int lower, int upper);
 
-//const double PI = 3.141592653589793238;
-//
-//const double DEG_TO_RAD = PI / 180;
-//
-//const double RAD_TO_DEG = 180 / PI;
+constexpr double PI2 = 3.141592653589793238;
+
+constexpr double DEG_TO_RAD2 = PI2 / 180;
+
+constexpr double RAD_TO_DEG2 = 180 / PI2;
 
 // Returns the absolute value of val
-int abs(int val);
+int abs2(int val);
 
 // Returns base to the power of exp
 int pow(int base, int power);

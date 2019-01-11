@@ -2,7 +2,7 @@
 
 transform2d::transform2d()
 {
-
+	parent = nullptr;
 }
 
 void transform2d::setLocalPosition(const vec2 &newPos)
@@ -51,14 +51,20 @@ mat3 transform2d::getTRSMatrix() const
 
 vec2 transform2d::worldPosition() const
 {
+	if (parent == nullptr)
+		return localPos;
 	return vec2(parent->localPos.x + localPos.x, parent->localPos.y + localPos.y);
 }
 float transform2d::worldRotation() const
 {
-	return tan((parent->localRot + localRot));
+	if (parent == nullptr)
+		return localRot;
+	return parent->localRot + localRot;
 }
 vec2 transform2d::worldScale() const
 {
+	if (parent == nullptr)
+		return localScale;
 	return vec2(parent->localScale.x * localScale.x, parent->localScale.y * localScale.y);
 }
 
@@ -75,6 +81,7 @@ transform2d *transform2d::getParent() const
 void transform2d::addChild(transform2d * child)
 {
 	children.push_back(child);
+	child->setParent(this);
 }
 
 transform2d * transform2d::getChildren() const

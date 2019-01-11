@@ -23,9 +23,10 @@ gameObject::gameObject(const string &filename, const vec2 &newPos, const float &
 
 	startPos = transform.localPos;
 
-	duration = 1;
+	duration = newDuration;
 	elapsed = 0;
 	target = 0;
+	left = false;
 
 	sprite = LoadTexture(filename.c_str());
 }
@@ -37,7 +38,7 @@ void gameObject::update(float _multiplier, vec2 center)
 
 void gameObject::draw()
 {
-	DrawTexturePro(sprite, Rectangle{ 0,0,32,32 }, Rectangle{ transform.localPos.x, transform.localPos.y, 32 * transform.localScale.x,32 * transform.localScale.y }, { 32,32 }, transform.localRot, WHITE);
+	DrawTexturePro(sprite, Rectangle{ 0,0,32,32 }, Rectangle{ transform.worldPosition().x, transform.worldPosition().y, 32 * transform.worldScale().x,32 * transform.worldScale().y }, { 16,16 }, transform.worldRotation(), WHITE);
 }
 
 void gameObject::move(vector<vec2>& waypoints)

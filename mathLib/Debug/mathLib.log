@@ -1,2 +1,10 @@
-﻿  Transform2D.cpp
+﻿  Mat3.cpp
+  Mat4.cpp
+  Transform2D.cpp
+  utils.cpp
+  Vector2.cpp
+  Vector3.cpp
+  Vector4.cpp
+  Generating Code...
+c:\users\s189072\source\repos\mathlib\mathlib\mat4.cpp(112): warning C4715: 'mat4::rotation': not all control paths return a value
   mathLib.vcxproj -> C:\Users\s189072\source\repos\mathLib\Debug\mathLib.lib
