@@ -29,9 +29,9 @@ void transform2d::rotate(const float angle)
 
 void transform2d::lookAt(const transform2d &target)
 {
-	vec2 targetVec = target.localPos - localPos;
-	float angle = atan2(targetVec.y, targetVec.x);
-	setLocalRotation(angle);
+	vec2 up = { 1,0 };
+	float angle = acos(up.dot(target.localPos) / (up.magnitude() * target.localPos.magnitude()));
+	localRot = angle;
 }
 
 vec2 transform2d::forward() const

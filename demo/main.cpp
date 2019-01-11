@@ -16,7 +16,7 @@ int main()
 
 	InitWindow(screenWidth, screenHeight, "demo");
 
-	gameObject body("ballshade_9.png", { 100,400 }, 0, { 1,1 }, 3);
+	gameObject body("ballshade_14.png", { 100,400 }, 0, { 1,1 }, 3);
 	gameObject turret("turret.png", { 0,0 }, 0, { 1,1 }, 3);
 	body.transform.addChild(&turret.transform);
 

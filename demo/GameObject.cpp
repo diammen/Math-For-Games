@@ -48,6 +48,10 @@ void gameObject::move(vector<vec2>& waypoints)
 	vec2 mid = startPos + (waypoints[target] - startPos) * 0.5f;
 	vec2 leftNorm = { -mid.y, mid.x };
 	vec2 rightNorm = { mid.y, mid.x };
+	transform2d trsTarget;
 	if (left) transform.localPos = quadraticBezier(startPos, leftNorm, waypoints[target], (elapsed / duration) > 1 ? 1 : (elapsed / duration));
 	else transform.localPos = quadraticBezier(startPos, rightNorm, waypoints[target], (elapsed / duration) > 1 ? 1 : (elapsed / duration));
+	trsTarget.localPos = waypoints[target];
+	transform.rotate(1.0f);
+	
 }
