@@ -67,6 +67,7 @@ vec2 transform2d::worldPosition() const
 	return { worldTRS.m3, worldTRS.m6 };
 }
 
+// in radians, convert to degrees when passing values into raylib functions
 float transform2d::worldRotation() const
 {
 	if (parent == nullptr)
