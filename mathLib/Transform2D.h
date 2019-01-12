@@ -23,6 +23,7 @@ public:
 	void setForward(const vec2 &newFwd);
 
 	mat3 getTRSMatrix() const;
+	mat3 getWorldTRS() const;
 
 	vec2 worldPosition() const;
 	float worldRotation() const;

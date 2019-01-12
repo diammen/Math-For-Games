@@ -49,23 +49,52 @@ mat3 transform2d::getTRSMatrix() const
 	return mat3::translation(localPos) * mat3::rotation(localRot) * mat3::scale(localScale.x, localScale.y);
 }
 
+mat3 transform2d::getWorldTRS() const
+{
+	if (parent == nullptr)
+		return getTRSMatrix();
+
+	return parent->getWorldTRS() * getTRSMatrix();
+}
+
 vec2 transform2d::worldPosition() const
 {
 	if (parent == nullptr)
-		return localPos;
-	return vec2(parent->localPos.x + localPos.x, parent->localPos.y + localPos.y);
+		return {getTRSMatrix().m3, getTRSMatrix().m6};
+
+	mat3 worldTRS = parent->getWorldTRS() * getTRSMatrix();
+
+	return { worldTRS.m3, worldTRS.m6 };
 }
+
 float transform2d::worldRotation() const
 {
 	if (parent == nullptr)
-		return localRot;
-	return parent->localRot + localRot;
+		return atan2(getTRSMatrix().m4, getTRSMatrix().m1);
+
+	mat3 worldTRS = parent->getWorldTRS() * getTRSMatrix();
+	float angle = atan2(worldTRS.m4, worldTRS.m1);
+
+	return angle;
 }
+
 vec2 transform2d::worldScale() const
 {
+	float magX, magY;
+
 	if (parent == nullptr)
-		return localScale;
-	return vec2(parent->localScale.x * localScale.x, parent->localScale.y * localScale.y);
+	{
+		magX = sqrt(getTRSMatrix().m1 * getTRSMatrix().m1 + getTRSMatrix().m4 * getTRSMatrix().m4);
+		magY = sqrt(getTRSMatrix().m2 * getTRSMatrix().m2 + getTRSMatrix().m5 * getTRSMatrix().m5);
+		return { magX, magY };
+	}
+
+	mat3 worldTRS = parent->getWorldTRS() * getTRSMatrix();
+
+	magX = sqrt(worldTRS.m1 * worldTRS.m1 + worldTRS.m4 * worldTRS.m4);
+	magY = sqrt(worldTRS.m2 * worldTRS.m2 + worldTRS.m5 * worldTRS.m5);
+
+	return { magX, magY };
 }
 
 void transform2d::setParent(transform2d *_parent)

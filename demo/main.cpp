@@ -52,11 +52,11 @@ int main()
 		}
 		if (IsKeyDown(KEY_A))
 		{
-			turret.transform.rotate(-6.0f);
+			turret.transform.rotate(-6.0f * GetFrameTime());
 		}
 		if (IsKeyDown(KEY_D))
 		{
-			turret.transform.rotate(6.0f);
+			turret.transform.rotate(6.0f * GetFrameTime());
 		}
 		//----------------------------------------------------------------------------------
 

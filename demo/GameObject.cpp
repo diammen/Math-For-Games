@@ -38,7 +38,7 @@ void gameObject::update(float _multiplier, vec2 center)
 
 void gameObject::draw()
 {
-	DrawTexturePro(sprite, Rectangle{ 0,0,32,32 }, Rectangle{ transform.worldPosition().x, transform.worldPosition().y, 32 * transform.worldScale().x,32 * transform.worldScale().y }, { 16,16 }, transform.worldRotation(), WHITE);
+	DrawTexturePro(sprite, Rectangle{ 0,0,32,32 }, Rectangle{ transform.worldPosition().x, transform.worldPosition().y, 32 * transform.worldScale().x,32 * transform.worldScale().y }, { 16,16 }, transform.worldRotation() * RAD_TO_DEG2, WHITE);
 }
 
 void gameObject::move(vector<vec2>& waypoints)
@@ -52,6 +52,5 @@ void gameObject::move(vector<vec2>& waypoints)
 	if (left) transform.localPos = quadraticBezier(startPos, leftNorm, waypoints[target], (elapsed / duration) > 1 ? 1 : (elapsed / duration));
 	else transform.localPos = quadraticBezier(startPos, rightNorm, waypoints[target], (elapsed / duration) > 1 ? 1 : (elapsed / duration));
 	trsTarget.localPos = waypoints[target];
-	transform.rotate(1.0f);
-	
+	transform.rotate(1.0f * GetFrameTime());
 }
